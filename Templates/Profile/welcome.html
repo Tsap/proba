@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}1{% endblock %}
+{% block content %}
+<p>
+{% for list in account_data %}
+	{{ list.name }} {{ list.surname}}</br>
+	{{ list.bio|date:"d.m.Y" }}
+{% endfor %}
+</p>
+<p>
+<b>Contact</b>
+<ul>
+{% for list in contact_data %}
+	<li>{{ list.id_contact_type.name_contact_type}}: <i>{{ list.value_contact}}</i></li>
+{% endfor %}
+<ul>
+</p>
+{% endblock %}

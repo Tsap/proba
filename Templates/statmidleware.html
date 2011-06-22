@@ -1,0 +1,20 @@
+<p>Statistica</p>
+<table>
+<tr>
+		<td>date</td>
+		<td>request_url</td>
+		<td>referer_url</td>
+		<td>client_address</td>
+		<td>agent</td>
+	</tr>
+{% for list in stat_view %}
+	<tr>
+		<td>{{ list.date|date:"d.m.Y H:m" }}</td>
+		<td>{{ list.request_url }}</td>
+		<td>{{ list.referer_url }}</td>
+		<td>{{ list.client_address }}</td>
+		<td>{{ list.agent }}</td>
+	</tr>
+{% endfor %}
+</table>
+</body>

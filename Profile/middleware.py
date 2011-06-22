@@ -11,3 +11,12 @@ class StatMiddleware(object):
 			)
 		self.stat.save()
 		return None
+	
+	def process_response(self,request,response):
+		from django.template import Context, loader
+		from proba.Profile.models import Stat
+		stat_view = Stat.objects.all().order_by('-date')[:10]
+		t = loader.get_template('statmidleware.html')
+		c = Context({'stat_view': stat_view,})
+		response.content = response.content.replace('</body>', t.render(c))
+		return response

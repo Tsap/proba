@@ -18,3 +18,12 @@ class Contact (models.Model):
 	value_contact = models.CharField(max_length=50)
 	def __unicode__(self):
 		return self.value_contact	
+
+class Stat (models.Model):
+        date = models.DateTimeField(auto_now_add=True)
+        request_url = models.CharField(max_length=500)
+        referer_url = models.URLField(verify_exists=False, blank=True, null=True)
+        client_address = models.IPAddressField(blank=True, null=True)
+        agent = models.TextField(null=True,blank=True)
+    	def __unicode__(self):
+			return '%s %s ' % (self.date, self.client_address)

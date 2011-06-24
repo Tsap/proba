@@ -18,5 +18,5 @@ class StatMiddleware(object):
 		stat_view = Stat.objects.all().order_by('-date')[:10]
 		t = loader.get_template('statmidleware.html')
 		c = Context({'stat_view': stat_view,})
-		response.content = response.content.replace('</body>', t.render(c))
+		response.content = response.content.replace('<a name=statistic></a>', t.render(c))
 		return response
